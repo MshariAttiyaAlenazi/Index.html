@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية | مشاري العنزي</title>
+    <style>
+        /* المتغيرات الأساسية للألوان (الوضع النهاري) */
+        :root {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --accent-color: #1e3a8a; 
+            --accent-light: #eff6ff;
+            --border-color: #e2e8f0;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* متغيرات الوضع الليلي */
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #60a5fa;
+            --accent-light: #172554;
+            --border-color: #334155;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            transition: var(--transition);
+            padding: 40px 20px;
+        }
+
+        /* أدوات التحكم (الأزرار العلوية) */
+        .controls {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px 60px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        /* رأس الصفحة والصورة الشخصية */
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .profile-img-container {
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-light);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-light);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        /* الأقسام */
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        section h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* تفاصيل الخبرات والتعليم */
+        .item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-right: 20px;
+            border-right: 2px solid var(--border-color);
+        }
+
+        .item::before {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .item-date {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .item-org {
+            font-size: 1.05rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .item ul {
+            padding-right: 25px;
+            color: var(--text-secondary);
+            list-style-type: none;
+        }
+
+        .item ul li {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .item ul li::before {
+            content: "▪";
+            position: absolute;
+            right: -20px;
+            color: var(--accent-color);
+        }
+
+        .item p {
+            color: var(--text-secondary);
+        }
+
+        /* المهارات */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .skills-list li {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .skills-list li:hover {
+            border-color: var(--accent-color);
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* كلاسات الأنيميشن (الجافا سكربت) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* إعدادات الطباعة */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+            [data-theme="dark"] {
+                --bg-color: #ffffff;
+                --card-bg: #ffffff;
+                --text-main: #000000;
+                --text-secondary: #333333;
+            }
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .item-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- أزرار التحكم العلوية -->
+    <div class="controls">
+        <button class="btn" id="theme-btn" onclick="toggleTheme()">
+            🌓 الوضع الليلي
+        </button>
+        <button class="btn" onclick="window.print()">
+            🖨️ طباعة / حفظ PDF
+        </button>
+    </div>
+
+    <div class="container">
+
+        <!-- رأس السيرة الذاتية -->
+        <header class="fade-in">
+            <!-- قسم الصورة الشخصية -->
+            <div class="profile-img-container">
+                <img src="https://d.top4top.io/p_3791iktm60.jpg" alt="صورة مشاري العنزي" class="profile-img">
+            </div>
+
+            <h1>مشاري عطية دغفق رسم العنزي</h1>
+            <p>مدير فرع |</p>
+            <div class="contact-info">
+                <span>📧 msharialenaze@gmail.com</span>
+                <span>📱 0538510169</span>
+                <span>📍 المنطقة الشرقية، المملكة العربية السعودية</span>
+            </div>
+        </header>
+
+        <!-- النبذة المهنية -->
+        <section class="fade-in">
+            <h2>الهدف الرئيسي</h2>
+            <p class="summary">
+                قيادي إداري متمكن بخبرة عملية متقدمة في إدارة الفروع والعمليات التشغيلية، وتحليل التنافسية وتطوير الأداء المؤسسي. أمتلك رؤية تحليلية لرفع كفاءة العمليات وضمان سير العمل وفق أعلى معايير الجودة، وأسعى لتوظيف مهاراتي القيادية والتشغيلية لدعم اتخاذ القرار والمساهمة الفاعلة في تحقيق الأهداف الاستراتيجية للمنظمة.
+            </p>
+        </section>
+
+        <!-- الخبرات المهنية -->
+        <section class="fade-in">
+            <h2>الخبرة المهنية</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">مدير فرع (Branch Manager)</span>
+                    <span class="item-date">2020 - الحالي</span>
+                </div>
+                <div class="item-org">الشركة السعودية للتسويق المحدودة (أسواق المزرعة)</div>
+                <ul>
+                    <li>إدارة وتوجيه العمليات التشغيلية اليومية للفرع لضمان كفاءة سير العمل وتقديم أفضل مستوى من الخدمات.</li>
+                    <li>قيادة وتدريب فرق العمل وتوزيع المهام بطرق استراتيجية لتحقيق مستهدفات البيع والجودة الشاملة.</li>
+                    <li>إدارة وتخطيط المشتريات، ومراقبة حركة المخزون، والتنسيق الفعال مع الموردين لتأمين سلاسل الإمداد.</li>
+                    <li>تحليل التقارير الدورية ومراقبة مؤشرات الأداء الرئيسية (KPIs) لتعظيم الربحية وتقليص الهدر التشغيلي.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- التعليم الأكاديمي -->
+        <section class="fade-in">
+            <h2>التعليم الأكاديمي</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">دبلوم أعمال بنكية</span>
+                    <span class="item-date">يناير 2009</span>
+                </div>
+                <div class="item-org">معهد الإدارة العامة</div>
+                <p>تطبيق مفاهيم الإدارة الحديثة، واكتساب المهارات الإدارية المتقدمة لتحسين كفاءة العمليات وتطوير بيئات العمل المؤسسية.</p>
+            </div>
+        </section>
+
+        <!-- التطوير المهني -->
+        <section class="fade-in">
+            <h2>التطوير المهني والشهادات</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">سلسلة الورش التدريبية للزكاة والضريبة</span>
+                    <span class="item-date">سبتمبر 2025</span>
+                </div>
+                <div class="item-org">الهيئة السعودية للمراجعين والمحاسبين (SOCPA)</div>
+                <p>تطوير الكفاءة في التعامل مع الأنظمة الضريبية الحكومية، وفهم آليات الامتثال الضريبي واحتساب الزكاة للمنشآت.</p>
+            </div>
+           
+        </section>
+
+        <!-- الكفاءات والمهارات -->
+        <section class="fade-in">
+            <h2>الكفاءات والمهارات الأساسية</h2>
+            <ul class="skills-list">
+                <li>إدارة العمليات التشغيلية</li>
+                <li>القيادة الاستراتيجية لفرق العمل</li>
+                <li>الامتثال الضريبي والتحليل المالي</li>
+                <li>تحليل مؤشرات الأداء (KPIs)</li>
+                <li>إدارة علاقات الموردين والعملاء</li>
+             
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- كود الجافا سكربت -->
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = '☀️ الوضع النهاري';
+        }
+
+        function toggleTheme() {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeBtn.innerHTML = '🌓 الوضع الليلي';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeBtn.innerHTML = '☀️ الوضع النهاري';
+            }
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
